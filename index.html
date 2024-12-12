@@ -4,7 +4,50 @@
   <title>Registration Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="form.css">
-<script src="script.js">
+<script>
+function validateForm() {
+  const name = document.getElementById("name").value;
+  const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  // Name validation
+  if (!/^[A-Za-z ]{15,}$/.test(name)) {
+    alert("Name should contain alphabets only and should be at least 15 characters long.");
+    return false;
+  }
+
+  // Password validation
+  if (password.length < 8) {
+    alert("Password should be at least 8 characters long.");
+    return false;
+  }
+
+  // Email validation
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
+  if (!emailRegex.test(email)) {
+    alert("Invalid email format.");
+    return false;
+  }
+
+  // Phone number validation
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Phone number should contain exactly 10 digits.");
+    return false;
+  }
+
+  return true;
+}
+    
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    
+    document.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </head>
 <body>
